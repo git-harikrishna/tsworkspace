@@ -1,0 +1,14 @@
+{
+  "name": "package2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no error at package2\" && exit 1",
+    "start": "node ../../dist/workspace/package2/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

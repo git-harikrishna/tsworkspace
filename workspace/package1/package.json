@@ -1,0 +1,21 @@
+{
+  "name": "package1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no error at package1\" && exit 1",
+    "start": "node ../../dist/workspace/package1/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.4.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0"
+  }
+}
