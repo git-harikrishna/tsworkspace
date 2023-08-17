@@ -1,5 +1,5 @@
-import { connectDB, dataPopulate } from "./config"; //
 import express, { Request, Response } from "express";
+import { connectDB ,dataPopulate} from "./config";
 
 const app = express();
 
@@ -14,3 +14,5 @@ console.log("package 1 runnnnninnggg...");
 app.listen(port, () => {
   console.log(`Server is running on port ${port} from package 1`);
 });
+
+export default connectDB ;

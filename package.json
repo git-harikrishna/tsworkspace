@@ -2,7 +2,7 @@
   "name": "tsworkspace",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "workspaces": [
     "workspace/package1",
     "workspace/package2"
@@ -13,7 +13,6 @@
     "start:package2": "node dist/workspace/package2/index.js",
     "start:concurrent": "concurrently \"npm run start:package1\" \"npm run start:package2\""
   },
-  
   "author": "",
   "license": "ISC",
   "devDependencies": {

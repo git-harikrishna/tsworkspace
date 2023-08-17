@@ -1,12 +1,11 @@
 {
-  "name": "@tsworkspace/package2",
+  "name": "@tsworkspace/pack3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no error at package2\" && exit 1",
-    "start": "nodemon ../../dist/workspace/package2/index.js",
-    "dev": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.ts"
   },
   "keywords": [],
   "author": "",
