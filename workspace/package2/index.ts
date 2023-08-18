@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
-import connectDB from "@tsworkspace/package1";
-import userRoutes from "./routes/routes";
+import { getUser } from "./getUser/getUser";
+import {connectDB} from "../package1/config";
 
 const app = express();
+const port = 5000;
 app.use(express.json());
 connectDB();
-app.use("/", userRoutes);
+app.get("/getUser", getUser);
 
 console.log("package 2 runnnnninnggg...");
 
