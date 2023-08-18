@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import { connectDB ,dataPopulate} from "./config";
-import { signUp } from "./createUser/createUser";
 
 const app = express();
 
@@ -9,7 +8,6 @@ app.use(express.json());
 const port = 3000;
 connectDB();
 dataPopulate();
-app.post("/signUp", signUp);
 
 console.log("package 1 runnnnninnggg...");
 

@@ -1,12 +1,12 @@
 import express, { Request, Response } from "express";
-import { getUser } from "./getUser/getUser";
 import {connectDB} from "../package1/config";
+import router from "./routes/routes";
 
 const app = express();
 const port = 5000;
 app.use(express.json());
 connectDB();
-app.get("/getUser", getUser);
+app.get("/", router);
 
 console.log("package 2 runnnnninnggg...");
 

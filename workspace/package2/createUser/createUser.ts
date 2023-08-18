@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import { db_User } from "../types";
+import { db_User } from "@tsworkspace/package1/types";
 import User from "@tsworkspace/package1/userSchema";
 
 export const signUp = async (
