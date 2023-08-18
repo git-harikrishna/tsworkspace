@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import {connectDB} from "../package1/config";
+import connectDB from "@tsworkspace/package1";
 import router from "./routes/routes";
 
 const app = express();
