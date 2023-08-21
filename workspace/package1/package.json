@@ -2,8 +2,7 @@
   "name": "@tsworkspace/package1",
   "version": "1.0.0",
   "description": "",
-  "main": "index",
-  "type": "module",
+  "main": "../../../dist/workspace/package1/index",
   "scripts": {
     "test": "echo \"Error: no error at package1\" && exit 1",
     "start": "node ../../dist/workspace/package1/index.js"

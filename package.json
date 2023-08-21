@@ -8,10 +8,8 @@
     "workspace/package2"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:package1": "node dist/workspace/package1/index.js",
-    "start:package2": "node dist/workspace/package2/index.js",
-    "start:concurrent": "concurrently \"npm run start:package1\" \"npm run start:package2\""
+    "start" : "node ./dist/workspace/package2/index.js",
+    "dev": "node ./workspace/package2/index.ts"
   },
   "author": "",
   "license": "ISC",
