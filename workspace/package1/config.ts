@@ -1,7 +1,6 @@
 import mongoose, { ConnectOptions } from "mongoose";
-import UserModel from "./userSchema"; // Import IUser from the correct path
+import userModel from "./userSchema"; // Import IUser from the correct path
 import { config } from "dotenv";
-import bcrypt from "bcrypt";
 
 const connectDB = async (): Promise<void> => {
   try {
@@ -16,14 +15,16 @@ const connectDB = async (): Promise<void> => {
     if (url == undefined) return;
 
     await mongoose.connect(url, mongooseOptions);
+    await userModel
+      .deleteMany({})
+      .then(() => console.log("done deletion"))
+      .catch((e) => console.log(e));
     console.log("Connected to MongoDB");
   } catch (error) {
     console.log("Error connecting to MongoDB:", error);
   }
 };
 
-
-
 // the password is hashed and stored
 
-export default connectDB ;
+export default connectDB;

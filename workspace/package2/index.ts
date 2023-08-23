@@ -1,13 +1,12 @@
 import express, { NextFunction, Request, Response } from "express";
-import connectDB from "@tsworkspace/package1"; 
+import connectDB from "@tsworkspace/package1";
 import bcrypt from "bcrypt";
 import { db_User } from "../package1/types";
 import UserP2 from "./userSchema";
 
 const app = express();
-const port = 3000;
 app.use(express.json());
-connectDB();
+connectDB().then(async()=>{await UserP2.deleteMany({}); console.log("Deleted uses at P2");});
 
 // app.use("/", router);
 app.post(
@@ -37,7 +36,9 @@ app.post(
         return res.status(400).json({ message: "User name can't be null" });
       }
 
-      const dbuser: db_User | null = await UserP2.findOne({ name: req.body.name });
+      const dbuser: db_User | null = await UserP2.findOne({
+        name: req.body.name,
+      });
       if (dbuser) {
         return res.status(400).json({ message: "User name already exists." });
       }
@@ -102,8 +103,6 @@ app.get(
   }
 );
 
-console.log("package 2 runnnnninnggg...");
+export default app;
 
-app.listen(3000, () => {
-  console.log(`Server is running on port ${3000} from package 2`);
-});
+console.log("package 2 runnnnninnggg...");
