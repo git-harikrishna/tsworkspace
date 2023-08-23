@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node ./dist/workspace/package2/index.js",
     "dev": "node ./workspace/package2/index.ts",
-    "test": "jest"
+    "test": "jest --coverage"
     },
   "author": "",
   "license": "ISC",

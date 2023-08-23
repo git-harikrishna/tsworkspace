@@ -1,11 +1,10 @@
 import request from 'supertest';
-import app from '../workspace/package2/index'; // Assuming this is the filename where your Express app is defined
+import app from '../workspace/package2/index';
 
 describe('User Routes', () => {
   // Test signUp route
   describe('POST /signUp', () => {
     it('should sign up a new user', async () => {
-      // expect.assertions(1);
       const newUser = {
         name: 'Test User',
         mobile_no: '1234567890',
