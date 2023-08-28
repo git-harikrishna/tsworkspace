@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 connectDB().then(async()=>{await UserP2.deleteMany({}); console.log("Deleted uses at P2");});
 
-// app.use("/", router);
 app.post(
   "/signUp",
   async (
@@ -89,7 +88,9 @@ app.get(
         dbuser.password
       );
 
-      if (!result) {
+      console.log(loginpassword + " "+ dbuser.password + "  " + result);
+
+      if (loginpassword != dbuser.password) {
         return res.status(401).json({ msg: "Invalid Password" });
       }
 

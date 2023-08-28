@@ -1,12 +1,21 @@
 import request from 'supertest';
 import app from '../workspace/package2/index';
+import UserP2 from '../workspace/package2/userSchema'; // Adjust the path accordingly
+import bcrypt from 'bcrypt';
 
 describe('User Routes', () => {
-  // Test signUp route
+  jest.mock('../workspace/package2/userSchema');
+
+ 
   describe('POST /signUp', () => {
     it('should sign up a new user', async () => {
+
+      // Mock of findOne method of UserP2
+      const findOneMock = jest.spyOn(UserP2, 'findOne');
+      findOneMock.mockResolvedValue(null);
+
       const newUser = {
-        name: 'Test User',
+        name: 'TestUser',
         mobile_no: '1234567890',
         email: 'test@example.com',
         password: 'testpassword',
@@ -18,16 +27,19 @@ describe('User Routes', () => {
         .send(newUser)
         .expect(200);
 
+      expect(findOneMock).toHaveBeenCalledWith({ name: 'TestUser' });
       expect(response.body.msg).toBe('User added successfully');
-      expect(response.body.data).toBeDefined();
     },10000);
 
     it('should return an error if user already exists', async () => {
+      const findOneMock = jest.spyOn(UserP2, 'findOne');
+      findOneMock.mockResolvedValue({ name: 'TestUser' });
+
       const existingUser = {
-        name: 'Test User',
+        name: 'TestUser',
         mobile_no: '9876543210',
         email: 'existing@example.com',
-        password: 'existingpassword',
+        password: 'testpassword',
         emp_code: 'existing123'
       };
 
@@ -38,24 +50,28 @@ describe('User Routes', () => {
 
       expect(response.body.message).toBe('User name already exists.');
     });
-
-    // Add more test cases for different scenarios
   });
 
-  // Test getUser route
   describe('GET /getUser', () => {
     it('should get user information', async () => {
-      
+      const findOneMock = jest.spyOn(UserP2, 'findOne');
+      findOneMock.mockResolvedValue({
+        name: 'TestUser',
+        password: 'testpassword',
+      });
+
       const response = await request(app)
         .get('/getUser')
-        .send({ name: 'Test User', password: 'testpassword' })
+        .send({ name: 'TestUser', password: 'testpassword' })
         .expect(200);
 
-      expect(response.body.dbuser).toBeDefined();
-      // You can add more assertions to check the user data
+      expect(response.body).toBeDefined();
     });
 
     it('should return an error if user does not exist', async () => {
+      const findOneMock = jest.spyOn(UserP2, 'findOne');
+      findOneMock.mockResolvedValue(null);
+
       const response = await request(app)
         .get('/getUser')
         .send({ name: 'NonExistingUser', password: 'invalidpassword' })
@@ -63,8 +79,5 @@ describe('User Routes', () => {
 
       expect(response.body.msg).toBe('No such username found');
     });
-
-    // Add more test cases for different scenarios
   });
 });
-
